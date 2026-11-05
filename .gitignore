@@ -1,0 +1,3 @@
+debui
+*.db
+.env
