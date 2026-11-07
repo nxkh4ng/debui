@@ -51,6 +51,10 @@ func (p *Postgres) ListTables(ctx context.Context) ([]string, error) {
 	return tables, nil
 }
 
+func (p *Postgres) GetData(ctx context.Context, table string, limit, offset int) (TableData, error) {
+	return TableData{}, nil
+}
+
 func (p *Postgres) Close() error {
 	p.pool.Close()
 	return nil

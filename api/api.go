@@ -2,17 +2,22 @@ package api
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 )
 
-func Heathz(w http.ResponseWriter, r *http.Request) {
+func Healthz(w http.ResponseWriter, r *http.Request) {
 	_, _ = w.Write([]byte("ok"))
 }
 
 func writeJSON(w http.ResponseWriter, status int, v any) {
 	buf, err := json.Marshal(v)
 	if err != nil {
-		http.Error(w, "JSON encode failed", http.StatusInternalServerError)
+		http.Error(
+			w,
+			fmt.Sprintf("encode json: %v", err),
+			http.StatusInternalServerError,
+		)
 		return
 	}
 
